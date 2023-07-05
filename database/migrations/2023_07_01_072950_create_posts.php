@@ -5,19 +5,20 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
+
+    protected $connection = 'pgsql_laravel';
 
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        DB::statement('CREATE SCHEMA IF NOT EXISTS laravel');
+        DB::statement('CREATE SCHEMA IF NOT EXISTS lara');
 
-        Schema::connection('pgsql_laravel')->create('posts', function (Blueprint $table)
-        {
+        Schema::connection('pgsql_laravel')->create('posts', function (Blueprint $table) {
             $table->id();
+            $table->integer('category_id')->nullable();
             $table->string('title');
             $table->text('content');
             $table->string('image')->nullable();

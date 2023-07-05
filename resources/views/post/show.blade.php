@@ -15,5 +15,20 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-1">
+                <a href="{{route('post.index')}}" class="btn btn-primary btn-sm mt-3">Back</a>
+            </div>
+            <div class="col-md-1">
+                <a href="{{route('post.edit', [$post->id])}}" class="btn btn-success btn-sm mt-3 float-right">Edit</a>
+            </div>
+            <div class="col-md-1">
+                <form action="{{route('post.delete', [$post->id])}}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm mt-3">
+                </form>
+            </div>
+        </div>
     </div>
 @endsection

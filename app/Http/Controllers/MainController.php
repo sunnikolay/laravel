@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,10 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('main');
+        $category = Category::find(1);
+//        dd($category->posts);
+//        return view('main');
+
+        dd('ok');
     }
 }

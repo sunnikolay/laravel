@@ -21,7 +21,12 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('post.create ');
+        return view('post.create');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('post.edit', compact('post'));
     }
 
     public function store()
@@ -37,19 +42,25 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    public function update()
+    public function update(Post $post)
     {
-        $post = Post::find(6);
-        $post->update(
-            [
-                'title'        => 'Updated',
-                'content'      => 'Updated',
-                'image'        => 'Updated',
-                'likes'        => 100,
-                'is_published' => true
-            ]
-        );
-        dd($post);
+        $data = request()->validate([
+            'title' => 'string',
+            'post_content' => 'string',
+            'image' => 'string',
+            'likes' => 'integer'
+        ]);
+
+        $post->update($data);
+
+        return redirect()->route('post.show', [$post->id]);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('post.index');
     }
 
     public function delete()
@@ -62,10 +73,10 @@ class PostController extends Controller
     public function firstOrCreate()
     {
         $anotherPost = [
-            'title'        => 'Some post',
-            'content'      => 'Some content',
-            'image'        => 'image.png',
-            'likes'        => 11,
+            'title' => 'Some post',
+            'content' => 'Some content',
+            'image' => 'image.png',
+            'likes' => 11,
             'is_published' => true
         ];
         $post = Post::firstOrCreate(
@@ -78,10 +89,10 @@ class PostController extends Controller
     public function updateOrCreate()
     {
         $anotherPost = [
-            'title'        => 'Some update or create post',
-            'content'      => 'Some update or create content',
-            'image'        => 'image1.png',
-            'likes'        => 12,
+            'title' => 'Some update or create post',
+            'content' => 'Some update or create content',
+            'image' => 'image1.png',
+            'likes' => 12,
             'is_published' => true
         ];
         $post = Post::updateOrCreate(
