@@ -6,7 +6,7 @@
                 <ul class="list-group">
                     <li class="list-group-item"><b>id: </b>{{$post->id}}</li>
                     <li class="list-group-item"><b>title: </b>{{$post->title}}</li>
-                    <li class="list-group-item"><b>content: </b>{{$post->post_content}}</li>
+                    <li class="list-group-item"><b>content: </b>{{$post->content}}</li>
                     <li class="list-group-item"><b>image: </b>{{$post->image}}</li>
                     <li class="list-group-item"><b>likes: </b>{{$post->likes}}</li>
                     <li class="list-group-item"><b>published: </b>{{$post->is_published}}</li>

@@ -11,7 +11,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
-                        <textarea class="form-control" name="post_content" id="content" placeholder="Content"></textarea>
+                        <textarea class="form-control" name="content" id="content" placeholder="Content"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
@@ -21,7 +21,15 @@
                         <label for="likes" class="form-label">Likes</label>
                         <input type="number" class="form-control" name="likes" id="likes" placeholder="Likes">
                     </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-control" id="category" name="category_id">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm mt-3">Create</button>
                 </form>
             </div>
         </div>

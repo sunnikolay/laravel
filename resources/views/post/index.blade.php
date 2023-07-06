@@ -22,7 +22,8 @@
                         <tr>
                             <th scope="row"><a href="{{route('post.show',$post->id)}}">{{$post->id}}</a></th>
                             <td>{{$post->title}}</td>
-                            <td>{{$post->post_content}}</td>
+                            <td>{{$post->content}}</td>
+                            <td>{{$post->likes}}</td>
                         </tr>
                     @endforeach
                     </tbody>
