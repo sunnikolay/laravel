@@ -12,9 +12,9 @@ class MainController extends Controller
 	public function index()
 	{
 		$category = Category::find(1);
-		$post     = Post::find(1);
-		$tag      = Tag::find(1);
-//		dd($tag->posts);
+		$post = Post::find(1);
+		$tag = Tag::find(1);
+        // dd($tag->posts);
 		return view('main');
 	}
 }
