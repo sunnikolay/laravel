@@ -72,7 +72,7 @@ class PostController extends Controller
 	public function store()
 	{
 		$data = request()->validate([
-			'title' => 'string', 'content' => 'string', 'image' => 'string', 'likes' => 'integer',
+			'title' => 'required|string', 'content' => 'required|string', 'image' => 'string', 'likes' => 'integer',
 			'category_id' => 'integer', 'tags' => ''
 		]);
 		$tags = $data['tags'];

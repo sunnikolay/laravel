@@ -7,15 +7,27 @@
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" name="title" class="form-control" id="title" placeholder="title">
+                        <input value="{{old('title')}}" type="text" name="title" class="form-control" id="title" placeholder="title">
+
+                        @error('title')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
-                        <textarea class="form-control" name="content" id="content" placeholder="Content"></textarea>
+                        <textarea class="form-control" name="content" id="content" placeholder="Content">{{old('content')}}</textarea>
+
+                        @error('content')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input type="text" class="form-control" name="image" id="image" placeholder="Image">
+                        <input value="{{old('image')}}" type="text" class="form-control" name="image" id="image" placeholder="Image">
+
+                        @error('image')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="likes" class="form-label">Likes</label>
@@ -25,7 +37,9 @@
                         <label for="category">Category</label>
                         <select class="form-control" id="category" name="category_id">
                             @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->title}}</option>
+                                <option
+                                        {{old('category_id') == $category->id ? ' selected':''}}
+                                        value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
                         </select>
                     </div>
