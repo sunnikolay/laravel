@@ -12,7 +12,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
-                        <textarea class="form-control" name="post_content" id="content" placeholder="Content">{{$post->post_content}}</textarea>
+                        <textarea class="form-control" name="content" id="content" placeholder="Content">{{$post->content}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
