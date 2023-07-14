@@ -11,6 +11,7 @@ use App\Http\Controllers\Post\ShowController;
 use App\Http\Controllers\Post\StoreController;
 use App\Http\Controllers\Post\UpdateController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Admin\Post\IndexController as AdminPostIndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,9 @@ Route::group(['namespace' => 'Post'], function() {
 
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+Route::group(['namespace' => 'Admin', 'prefix'=>'admin'], function() {
+    Route::group(['namespace' => 'Post'], function() {
+        Route::get('/post', [AdminPostIndexController::class, '__invoke'])->name('admin.post.index');
+    });
+});
