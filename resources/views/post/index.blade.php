@@ -38,7 +38,7 @@
                 </table>
 
                 <div>
-                    {{$collection->links()}}
+                    {{$collection->withQueryString()->links()}}
                 </div>
             </div>
         </div>
