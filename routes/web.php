@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Post\CreateController;
 use App\Http\Controllers\Post\DestroyController;
@@ -23,10 +24,9 @@ use \App\Http\Controllers\Admin\Post\IndexController as AdminPostIndexController
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function()
-{
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/main', [MainController::class, 'index'])->name('main.index');
 

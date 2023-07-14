@@ -10,3 +10,7 @@ status migrate
 ``php artisan migrate status``  
 create test data:  
 ``php artisan make --seed``
+
+# Auth
+Enable auth
+`php artisan ui:auth`
