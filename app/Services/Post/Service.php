@@ -8,15 +8,18 @@ use DateTime;
 
 class Service
 {
-	public function store(array $data)
+	public function store(array $data): Post
 	{
 		$tags = $data['tags'];
 		unset($data['tags']);
+
 		$post = Post::create($data);
 		$post->tags()->attach($tags, ['created_at' => new DateTime('now')]);
+
+		return $post;
 	}
 
-	public function update(Post $post, array $data)
+	public function update(Post $post, array $data): Post
 	{
 		$tags = $data['tags'];
 		unset($data['tags']);
@@ -24,5 +27,10 @@ class Service
 		//$post = $post->fresh(); -- refresh object
 		$post->update($data);
 		$post->tags()->sync($tags);
+
+		// Refresh object
+		$post = $post->fresh();
+
+		return $post;
 	}
 }
